@@ -1038,7 +1038,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
     /**
     *Positive test case with mandatory parameters for createANewRefund method.
     */
-    @Test(enabled=true, groups = { "wso2.esb" }, description = "stripe {createANewRefund} integration test with card parameters.")
+    @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewRefund} integration test with card parameters.")
     public void testCreateANewRefundWithCardParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewRefund_Positive.txt";
         String methodName = "stripe_createANewRefund";
@@ -1059,7 +1059,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
     /**
      *Positive test case with optiional parameters for createANewRefund method.
      **/
-    @Test(enabled=true, groups = { "wso2.esb" }, description = "stripe {createANewRefund} integration test with optional parameters.")
+    @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewRefund} integration test with optional parameters.")
     public void testCreateANewRefundWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewRefund_Optional.txt";
         String methodName = "stripe_createANewRefund";
@@ -1081,7 +1081,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
     /**
      * Negative test case for createANewRefund method.
     */
-    @Test(enabled=true, groups = { "wso2.esb" }, description = "stripe {createANewRefund} integration test with negative case.")
+    @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewRefund} integration test with negative case.")
     public void testCreateANewRefundForACustomerWithNegativeCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewRefund_Negative.txt";
         String methodName = "stripe_createANewRefund";
@@ -1093,7 +1093,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         try {
             jsonResponse = ConnectorIntegrationUtil.sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
             JSONObject jsonObject = new JSONObject(jsonString);
-            Assert.assertEquals(jsonResponse.getJSONObject("error").getString("message"),"No such charge: "+jsonObject.get("chargeId"));
+            Assert.assertEquals(jsonResponse.getJSONObject("error").getString("message"),"There is no payment with ID "+jsonObject.get("chargeId")+".");
         }finally {
             proxyAdmin.deleteProxy(methodName);
         }
