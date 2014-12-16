@@ -214,7 +214,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }finally {
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
      *Negative test case for CreateABankToken method.
@@ -236,7 +235,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-
     /**
      * Positive test case for retrieveAnExistingToken method.
     */
@@ -278,9 +276,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-   /**
-     *Positive test case with mandatory parameters for createANewCustomer method.
-     */
+    /**
+    *Positive test case with mandatory parameters for createANewCustomer method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewCustomer} integration test with card parameters.")
     public void testCreateANewCustomerWithCardParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewCustomer_WithCard.txt";
@@ -295,16 +293,13 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             JSONObject jsonObject = new JSONObject(jsonString);
             Assert.assertEquals(jsonResponse.getString("description"),jsonObject.get("description"));
             Assert.assertEquals(jsonResponse.getString("object"),"customer");
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
-     *Positive test case with optiional parameters for createANewCustomer method.
-     **/
+    *Positive test case with optiional parameters for createANewCustomer method.
+    **/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewCustomer} integration test with optional parameters.")
     public void testCreateANewCustomerWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewCustomer_Optional.txt";
@@ -386,8 +381,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     //     *Positive test case with mandatory parameters for updateACustomerDetails method.
-     //     */
+    *Positive test case with mandatory parameters for updateACustomerDetails method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateACustomerDetails} integration test with mandatory parameters.")
     public void testUpdateACustomerDetailsWithCardParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "updateACustomerDetails_WithCard.txt";
@@ -409,7 +404,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
     }
     /**
      *Positive test case with optiional parameters for updateACustomerDetails method.
-     **/
+    **/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateACustomerDetails} integration test with optional parameters.")
     public void testUpdateACustomerDetailWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "updateACustomerDetails_Optional.txt";
@@ -450,8 +445,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     //     * Positive test case for deleteAnExistingCustomer method.
-     //    */
+    * Positive test case for deleteAnExistingCustomer method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {deleteAnExistingCustomer} integration test with positive case.")
     public void testDeleteAnExistingCustomerWithPositiveCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "deleteAnExistingCustomer_Positive.txt";
@@ -505,10 +500,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("object"),"list");
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/customers");
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     *Positive test case for getAListOfAllCustomers method with optional parameters.
@@ -529,14 +522,12 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/customers");
             Assert.assertEquals(jsonResponse.getJSONArray("data").length(),jsonObject.get("limit"));
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
-      /**
-      *Positive test case with card parameter for createANewCharge method.
-      */
+    /**
+    *Positive test case with card parameter for createANewCharge method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewCharge} integration test with card parameters.")
     public void testCreateANewChargeWithCardParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewCharge_WithCard.txt";
@@ -553,9 +544,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("currency"), jsonObject.get("currency"));
             Assert.assertEquals(jsonResponse.getString("description"), jsonObject.get("description"));
             Assert.assertEquals(jsonResponse.getString("object"), "charge");
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
@@ -584,7 +573,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
     }
     /**
      *Positive test case with optiional parameters for createANewCharge method.
-     **/
+    **/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewCharge} integration test with optional parameters.")
     public void testCreateANewChargeWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewCharge_Optional.txt";
@@ -602,9 +591,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("description"),jsonObject.get("description"));
             Assert.assertEquals(jsonResponse.getJSONObject("shipping").getString("name"),jsonObject.get("shippingName"));
             Assert.assertEquals(jsonResponse.getString("object"),"charge");
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
@@ -628,9 +615,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-      /**
-      * Positive test case for retrieveAnExistingCharge method.
-      */
+    /**
+    * Positive test case for retrieveAnExistingCharge method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnExistingCharge} integration test with positive case.")
     public void testRetrieveAnExistingChargeWithPositiveCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "retrieveAnExistingCharge_Positive.txt";
@@ -650,7 +637,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for retrieveAnExistingCharge method.
+    * Negative test case for retrieveAnExistingCharge method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnExistingCharge} integration test with negative case.")
     public void testRetrieveAnExistingChargeWithNegativeCase() throws Exception {
@@ -669,9 +656,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-      /**
-      * Positive test case for updateAChargeDetails method.
-      */
+    /**
+    * Positive test case for updateAChargeDetails method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateAChargeDetails} integration test with positive case.")
     public void testUpdateAChargeDetailsWithPositiveCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "updateAChargeDetails_Positive.txt";
@@ -730,9 +717,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-        /**
-     //    *Positive test case for getAListOfAllCharges method.
-     //    */
+    /**
+    *Positive test case for getAListOfAllCharges method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {getAListOfAllCharges} integration test with optional parameters.")
     public void testGetAListOfAllChargesWithOptionalParameters() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "getAListOfAllCharges_Optional.txt";
@@ -749,10 +736,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/charges");
             Assert.assertEquals(jsonResponse.getJSONArray("data").length(),jsonObject.get("limit"));
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     * Positive test case for captureACharge method.
@@ -950,8 +935,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     //     * Positive test case for deleteAnExistingCard method.
-     //    */
+	* Positive test case for deleteAnExistingCard method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {deleteAnExistingCard} integration test with positive case.")
     public void testDeleteAnExistingCardWithPositiveCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "deleteAnExistingCard_Positive.txt";
@@ -1008,7 +993,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("object"),"list");
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/customers/"+jsonObject.get("customerId")+"/cards");
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
@@ -1031,7 +1015,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/customers/"+jsonObject.get("customerId")+"/cards");
             Assert.assertEquals(jsonResponse.getJSONArray("data").length(),jsonObject.get("limit"));
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
@@ -1116,7 +1099,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("object"),"list");
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/charges/"+jsonObject.get("chargeId")+"/refunds");
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
@@ -1139,7 +1121,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/charges/"+jsonObject.get("chargeId")+"/refunds");
             Assert.assertEquals(jsonResponse.getJSONArray("data").length(),jsonObject.get("limit"));
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
@@ -1164,8 +1145,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Positive test case for retrieveAnExistingRefund method.
-     */
+    * Positive test case for retrieveAnExistingRefund method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnExistingRefund} integration test with positive case.")
     public void testRetrieveAnExistingRefundWithPositiveCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "retrieveAnExistingRefund_Positive.txt";
@@ -1186,8 +1167,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for retrieveAnExistingRefund method.
-     */
+    * Negative test case for retrieveAnExistingRefund method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnExistingRefund} integration test with negative case.")
     public void testRetrieveAnExistingRefundWithNegativeCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "retrieveAnExistingRefund_Negative.txt";
@@ -1316,8 +1297,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     *Positive test case with optional parameter card for createANewRecipient method.
-     */
+    *Positive test case with optional parameter card for createANewRecipient method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewRecipient} integration test with card optional parameters.")
     public void testCreateANewRecipientWithCardParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewRecipient_cardOptional.txt";
@@ -1334,12 +1315,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("type"),jsonObject.get("type"));
             Assert.assertEquals(jsonResponse.getString("name"),jsonObject.get("recipientName"));
             Assert.assertTrue(Integer.parseInt(jsonResponse.getJSONObject("cards").getString("total_count"))>0);
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
      *Positive test case with optional parameters of card details for createANewRecipient method.
@@ -1360,16 +1338,13 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("type"),jsonObject.get("type"));
             Assert.assertEquals(jsonResponse.getString("name"),jsonObject.get("recipientName"));
             Assert.assertTrue(Integer.parseInt(jsonResponse.getJSONObject("cards").getString("total_count"))>0);
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
-     *Negative test case for createANewRecipient method.
-     */
+    *Negative test case for createANewRecipient method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewRecipient} integration test with  optional parameters of card details.")
     public void testCreateANewRecipientWithNegativeCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewRecipient_Negative.txt";
@@ -1383,12 +1358,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             jsonResponse = ConnectorIntegrationUtil.sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
             JSONObject jsonObject = new JSONObject(jsonString);
             Assert.assertEquals(jsonResponse.getJSONObject("error").getString("message"),"Name must contain first name and last name.");
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
      * Positive test case for retrieveAnExistingRecipient method.
@@ -1453,8 +1425,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     *Positive test case with optiional parameters for updateARecipientDetails method.
-     **/
+    *Positive test case with optiional parameters for updateARecipientDetails method.
+    **/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateARecipientDetails} integration test with optional parameters.")
     public void testUpdateARecipientDetailWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "updateARecipientDetails_Optional.txt";
@@ -1477,7 +1449,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for updateARecipientDetails method.
+    * Negative test case for updateARecipientDetails method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateACustomerDetails} integration test with negative case.")
     public void testUpdateARecipientDetailWithNegativeCase() throws Exception {
@@ -1518,7 +1490,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for deleteAnExistingRecipient method.
+    * Negative test case for deleteAnExistingRecipient method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {deleteAnExistingRecipient} integration test with negative case.")
     public void testDeleteAnExistingRecipientWithNegativeCase() throws Exception {
@@ -1538,8 +1510,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     *Positive test case for getAListOfAllRecipients method.
-     */
+    *Positive test case for getAListOfAllRecipients method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {getAListOfAllRecipients} integration test with mandatory parameters.")
     public void testGetAListOfAllRecipientsWithPositiveCase() throws Exception {
         String methodName = "stripe_getAListOfAllRecipients";
@@ -1552,10 +1524,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("object"),"list");
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/recipients");
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     *Positive test case for getAListOfAllRecipients method.
@@ -1601,8 +1571,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     *Positive test case with optiional parameters for createAnInvoice method.
-     **/
+    *Positive test case with optiional parameters for createAnInvoice method.
+    **/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createAnInvoice} integration test with optional parameters.")
     public void testCreateAnInvoiceWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createAnInvoice_Optional.txt";
@@ -1685,8 +1655,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-         * Positive test case for retrieveAnInvoicesLineItems method with mandatory parameters.
-         */
+    * Positive test case for retrieveAnInvoicesLineItems method with mandatory parameters.
+	*/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnExistingInvoice} integration test with positive case.")
     public void testRetrieveAnExistingInvoiceWithMandatoryParameters() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "retrieveAnInvoicesLineItems_Mandatory.txt";
@@ -1705,9 +1675,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-        /**
-        * Positive test case for retrieveAnInvoicesLineItems method with optional parameters.
-        */
+    /**
+    * Positive test case for retrieveAnInvoicesLineItems method with optional parameters.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnInvoicesLineItems} integration test with positive case.")
     public void testRetrieveAnInvoicesLineItemsWithOptionalParameters() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "retrieveAnInvoicesLineItems_Optional.txt";
@@ -1748,8 +1718,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-         * Positive test case for retrieveAnUpcomingInvoice method with mandatory parameters.
-         */
+	* Positive test case for retrieveAnUpcomingInvoice method with mandatory parameters.
+	*/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnUpcomingInvoice} integration test with positive case.")
     public void testRetrieveAnUpcomingInvoiceWithMandatoryParameters() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "retrieveAnUpcomingInvoice_Mandatory.txt";
@@ -1768,9 +1738,9 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-        /**
-        * Positive test case for retrieveAnUpcomingInvoice method with optional parameters.
-        */
+	/**
+	* Positive test case for retrieveAnUpcomingInvoice method with optional parameters.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnUpcomingInvoice} integration test with positive case.")
     public void testRetrieveAnUpcomingInvoiceWithOptionalParameters() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "retrieveAnUpcomingInvoice_Optional.txt";
@@ -1826,16 +1796,13 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             JSONObject jsonObject = new JSONObject(jsonString);
             Assert.assertEquals(jsonResponse.getString("id"),jsonObject.get("invoiceId"));
             Assert.assertEquals(jsonResponse.getString("object"),"invoice");
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
-     *Positive test case with optiional parameters for updateAnInvoice method.
-     **/
+    *Positive test case with optiional parameters for updateAnInvoice method.
+    **/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateAnInvoice} integration test with optional parameters.")
     public void testUpdateAnInvoiceWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "updateAnInvoice_Optional.txt";
@@ -1857,7 +1824,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for updateAnInvoice method.
+    * Negative test case for updateAnInvoice method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateAnInvoice} integration test with negative case.")
     public void testUpdateAnInvoiceWithNegativeCase() throws Exception {
@@ -1899,7 +1866,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for payAnInvoice method.
+    * Negative test case for payAnInvoice method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {payAnInvoice} integration test with negative case.")
     public void testPayAnInvoiceWithNegativeCase() throws Exception {
@@ -1933,10 +1900,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("object"),"list");
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/invoices");
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     *Positive test case for getAListOfInvoices method.
@@ -1957,10 +1922,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/invoices");
             Assert.assertEquals(jsonResponse.getJSONArray("data").length(),jsonObject.get("limit"));
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     *Positive test case with mandatory parameters for createATransfer method.
@@ -1981,14 +1944,12 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("amount"),jsonObject.get("amount"));
             Assert.assertEquals(jsonResponse.getString("currency"),jsonObject.get("currency"));
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
-     *Positive test case with optional parameter createATransfer method.
-     */
+    *Positive test case with optional parameter createATransfer method.
+	*/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createATransfer} integration test with optional parameters.")
     public void testCreateATransferWithOptionalParameters() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createATransfer_Optional.txt";
@@ -2028,14 +1989,12 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             jsonResponse = ConnectorIntegrationUtil.sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
             JSONObject jsonObject = new JSONObject(jsonString);
              Assert.assertEquals(jsonResponse.getJSONObject("error").getString("message"),"No such recipient: "+jsonObject.get("recipient"));
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
     /**
-     * Positive test case for retrieveAnExistingTransfer method.
+    * Positive test case for retrieveAnExistingTransfer method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnExistingTransfer} integration test with positive case.")
     public void testRetrieveAnExistingTransferWithPositiveCase() throws Exception {
@@ -2056,7 +2015,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for retrieveAnExistingTransfer method.
+	* Negative test case for retrieveAnExistingTransfer method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveAnExistingTransfer} integration test with negative case.")
     public void testRetrieveAnExistingTransferWithNegativeCase() throws Exception {
@@ -2083,7 +2042,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         String jsonRequestFilePath = pathToRequestsDirectory + "updateAnExistingTransfer_Mandatory.txt";
         String methodName = "stripe_updateAnExistingTransfer";
         final String jsonString = ConnectorIntegrationUtil.getFileContent(jsonRequestFilePath);
-       String modifiedJsonString = String.format(jsonString, stripeConnectorProperties.getProperty("apiKey"));
+        String modifiedJsonString = String.format(jsonString, stripeConnectorProperties.getProperty("apiKey"));
         final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
         proxyAdmin.addProxyService(new DataHandler(new URL(proxyFilePath)));
         JSONObject jsonResponse;
@@ -2092,16 +2051,13 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             JSONObject jsonObject = new JSONObject(jsonString);
             Assert.assertEquals(jsonResponse.getString("id"),jsonObject.get("transferId"));
             Assert.assertEquals(jsonResponse.getString("object"),"transfer");
-
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
-     *Positive test case with optiional parameters for updateAnExistingTransfer method.
-     **/
+    *Positive test case with optiional parameters for updateAnExistingTransfer method.
+    **/
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateAnExistingTransfer} integration test with optional parameters.")
     public void testUpdateAnExistingTransferWithOptionalParameter() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "updateAnExistingTransfer_Optional.txt";
@@ -2123,7 +2079,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for updateAnExistingTransfer method.
+    * Negative test case for updateAnExistingTransfer method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {updateAnExistingTransfer} integration test with negative case.")
     public void testUpdateAnExistingTransferWithNegativeCase() throws Exception {
@@ -2142,28 +2098,27 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             proxyAdmin.deleteProxy(methodName);
         }
     }
-//    /**
-//    * Positive test case for cancelATransfer method.
-//    */
-//    @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {cancelATransfer} integration test with positive case.")
-//    public void testCancelATransferWithPositiveCase() throws Exception {
-//        String jsonRequestFilePath = pathToRequestsDirectory + "cancelATransfer_Positive.txt";
-//        String methodName = "stripe_cancelATransfer";
-//        final String jsonString = ConnectorIntegrationUtil.getFileContent(jsonRequestFilePath);
-//       String modifiedJsonString = String.format(jsonString, stripeConnectorProperties.getProperty("apiKey"));
-//        final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
-//        proxyAdmin.addProxyService(new DataHandler(new URL(proxyFilePath)));
-//        JSONObject jsonResponse;
-//        try {
-//            jsonResponse = ConnectorIntegrationUtil.sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
-//            JSONObject jsonObject = new JSONObject(jsonString);
-//            Assert.assertEquals(jsonResponse.getString("id"),jsonObject.get("transferId"));
-//            Assert.assertEquals(jsonResponse.getString("status"),"canceled");
-//        }finally {
-//            proxyAdmin.deleteProxy(methodName);
-//        }
-//    }
-
+    /**
+    * Positive test case for cancelATransfer method.
+  	*/
+   	@Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {cancelATransfer} integration test with positive case.")
+   	public void testCancelATransferWithPositiveCase() throws Exception {
+       String jsonRequestFilePath = pathToRequestsDirectory + "cancelATransfer_Positive.txt";
+       String methodName = "stripe_cancelATransfer";
+       final String jsonString = ConnectorIntegrationUtil.getFileContent(jsonRequestFilePath);
+       String modifiedJsonString = String.format(jsonString, stripeConnectorProperties.getProperty("apiKey"));
+       final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
+       proxyAdmin.addProxyService(new DataHandler(new URL(proxyFilePath)));
+       JSONObject jsonResponse;
+       try {
+           jsonResponse = ConnectorIntegrationUtil.sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
+           JSONObject jsonObject = new JSONObject(jsonString);
+           Assert.assertEquals(jsonResponse.getString("id"),jsonObject.get("transferId"));
+           Assert.assertEquals(jsonResponse.getString("status"),"canceled");
+       }finally {
+           proxyAdmin.deleteProxy(methodName);
+       }
+    }
     /**
      * Negative test case for cancelATransfer method.
     */
@@ -2199,7 +2154,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("object"),"list");
             Assert.assertEquals(jsonResponse.getString("url"),"/v1/transfers");
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
@@ -2225,7 +2179,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
 
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     *Positive test case for retrieveAccountDetails method.
@@ -2246,7 +2199,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
 
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     *Positive test case for getCurrentAccountBalance method.
@@ -2264,12 +2216,11 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertTrue(jsonResponse.has("available"));
             Assert.assertEquals(jsonResponse.getString("object"), "balance");
         } finally {
-
             proxyAdmin.deleteProxy(methodName);
         }
     }
     /**
-     * Positive test case for retrieveABalanceTransaction method.
+    * Positive test case for retrieveABalanceTransaction method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveABalanceTransaction} integration test with positive case.")
     public void testRetrieveABalanceTransactionWithPositiveCase() throws Exception {
@@ -2290,7 +2241,7 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     * Negative test case for retrieveABalanceTransaction method.
+    * Negative test case for retrieveABalanceTransaction method.
     */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {retrieveABalanceTransaction} integration test with negative case.")
     public void testretrieveABalanceTransactionWithNegativeCase() throws Exception {
@@ -2315,7 +2266,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {getListOfBalanceHistory} integration test with mandatory parameters.")
     public void testGetListOfBalanceHistoryWithPositiveCase() throws Exception {
         String methodName = "stripe_getListOfBalanceHistory";
-        String modifiedJsonString = String.format("{\"apiKey\":\"%s\"}",stripeConnectorProperties.getProperty("apiKey"));        final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
+        String modifiedJsonString = String.format("{\"apiKey\":\"%s\"}",stripeConnectorProperties.getProperty("apiKey"));   
+        final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
         proxyAdmin.addProxyService(new DataHandler(new URL(proxyFilePath)));
         JSONObject jsonResponse;
         try {
@@ -2349,7 +2301,6 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
 
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
     *Positive test case with mandatory parameters for createANewPlan method.
@@ -2370,16 +2321,14 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
             Assert.assertEquals(jsonResponse.getString("currency"),jsonObject.get("currency"));
             Assert.assertEquals(jsonResponse.getString("name"),jsonObject.get("name"));
             Assert.assertEquals(jsonResponse.getString("interval"),jsonObject.get("interval"));
-
         } finally {
 
             proxyAdmin.deleteProxy(methodName);
         }
-
     }
     /**
-     *Positive test case with optional parameter createANewPlan method.
-     */
+	*Positive test case with optional parameter createANewPlan method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewPlan} integration test with optional parameters.")
     public void testCreateANewPlanWithOptionalParameters() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewPlan_Optional.txt";
@@ -2404,8 +2353,8 @@ public class StripeConnectorIntegrationTest extends ESBIntegrationTest {
         }
     }
     /**
-     *Negative test case for createANewTransfer method.
-     */
+    *Negative test case for createANewTransfer method.
+    */
     @Test(enabled=false, groups = { "wso2.esb" }, description = "stripe {createANewPlan} integration test with  optional parameters of card details.")
     public void testCreateANewPlanWithNegativeCase() throws Exception {
         String jsonRequestFilePath = pathToRequestsDirectory + "createANewPlan_Negative.txt";
