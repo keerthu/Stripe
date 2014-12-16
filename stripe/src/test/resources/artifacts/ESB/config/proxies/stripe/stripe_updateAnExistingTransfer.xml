@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_updateAnExistingTransfer"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="uri.var.transferId" expression="json-eval($.transferId)"/>
+            <property name="uri.var.metadata" expression="json-eval($.metadata)"/>
+            <property name="uri.var.description" expression="json-eval($.description)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.updateAnExistingTransfer>
+                <transferId>{$ctx:transferId}</transferId>
+                <metadata>{$ctx:metadata}</metadata>
+                <description>{$ctx:description}</description>
+            </stripe.updateAnExistingTransfer>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

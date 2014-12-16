@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_createAnInvoice"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <property name="customer" expression="json-eval($.customer)"/>
+         <property name="applicationFee" expression="json-eval($.applicationFee)"/>
+         <property name="description" expression="json-eval($.description)"/>
+         <property name="statementDescription" expression="json-eval($.statementDescription)"/>
+         <property name="metadata" expression="json-eval($.metadata)"/>
+         <property name="subscription" expression="json-eval($.subscription)"/>
+         <property name="apiKey" expression="json-eval($.apiKey)"/>
+         <stripe.init>
+              <apiKey>{$ctx:apiKey}</apiKey>
+         </stripe.init>
+         <stripe.createAnInvoice>
+            <customer>{$ctx:customer}</customer>
+             <applicationFee>{$ctx:applicationFee}</applicationFee>
+            <description>{$ctx:description}</description>
+            <statementDescription>{$ctx:statementDescription}</statementDescription>
+            <metadata>{$ctx:metadata}</metadata>
+            <subscription>{$ctx:subscription}</subscription>
+         </stripe.createAnInvoice>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+   </target>
+   <description/>
+</proxy>
+                                	

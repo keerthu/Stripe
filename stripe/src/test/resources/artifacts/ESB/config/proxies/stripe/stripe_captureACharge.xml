@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_captureACharge"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <property name="chargeId" expression="json-eval($.chargeId)"/>
+         <property name="applicationFee" expression="json-eval($.applicationFee)"/>
+         <property name="amount" expression="json-eval($.amount)"/>
+         <property name="receiptEmail" expression="json-eval($.receiptEmail)"/>
+          <property name="apiKey" expression="json-eval($.apiKey)"/>
+          <stripe.init>
+              <apiKey>{$ctx:apiKey}</apiKey>
+          </stripe.init>
+          <stripe.captureACharge>
+            <chargeId>{$ctx:chargeId}</chargeId>
+            <applicationFee>{$ctx:applicationFee}</applicationFee>
+            <amount>{$ctx:amount}</amount>
+            <receiptEmail>{$ctx:receiptEmail}</receiptEmail>
+         </stripe.captureACharge>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+   </target>
+   <description/>
+</proxy>
+
+
+
+
+                                
+                                

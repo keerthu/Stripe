@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_getAListOfAllTransfers"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="recipient" expression="json-eval($.recipient)"/>
+            <property name="status" expression="json-eval($.status)"/>
+            <property name="endingBefore" expression="json-eval($.endingBefore)"/>
+            <property name="limit" expression="json-eval($.limit)"/>
+            <property name="startingAfter" expression="json-eval($.startingAfter)"/>
+            <property name="createdGT" expression="json-eval($.createdGT)"/>
+            <property name="createdGTE" expression="json-eval($.createdGTE)"/>
+            <property name="createdLT" expression="json-eval($.createdLT)"/>
+            <property name="createdLTE" expression="json-eval($.createdLTE)"/>
+            <property name="dateGT" expression="json-eval($.dateGT)"/>
+            <property name="dateGTE" expression="json-eval($.dateGTE)"/>
+            <property name="dateLT" expression="json-eval($.dateLT)"/>
+            <property name="dateLTE" expression="json-eval($.dateLTE)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.getAListOfAllTransfers>
+                <recipient>{$ctx:recipient}</recipient>
+                <status>{$ctx:status}</status>
+                <endingBefore>{$ctx:endingBefore}</endingBefore>
+                <limit>{$ctx:limit}</limit>
+                <startingAfter>{$ctx:startingAfter}</startingAfter>
+                <createdGT>{$ctx:createdGT}</createdGT>
+                <createdGTE>{$ctx:createdGTE}</createdGTE>
+                <createdLT>{$ctx:createdLT}</createdLT>
+                <createdLTE>{$ctx:createdLTE}</createdLTE>
+                <dateGT>{$ctx:dateGT}</dateGT>
+                <dateGTE>{$ctx:dateGTE}</dateGTE>
+                <dateLT>{$ctx:dateLT}</dateLT>
+                <dateLTE>{$ctx:dateLTE}</dateLTE>
+            </stripe.getAListOfAllTransfers>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_createATransfer"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="card" expression="json-eval($.card)"/>
+            <property name="amount" expression="json-eval($.amount)"/>
+            <property name="currency"  expression="json-eval($.currency)"/>
+            <property name="description" expression="json-eval($.description)"/>
+            <property name="metadata" expression="json-eval($.metadata)"/>
+            <property name="recipient" expression="json-eval($.recipient)"/>
+            <property name="bankAccount" expression="json-eval($.bankAccount)"/>
+            <property name="statementDescription" expression="json-eval($.statementDescription)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.createATransfer>
+                <card>{$ctx:card}</card>
+                <amount>{$ctx:amount}</amount>
+                <currency>{$ctx:currency}</currency>
+                <description>{$ctx:description}</description>
+                <metadata>{$ctx:metadata}</metadata>
+                <recipient>{$ctx:recipient}</recipient>
+                <bankAccount>{$ctx:bankAccount}</bankAccount>
+                <statementDescription>{$ctx:statementDescription}</statementDescription>
+            </stripe.createATransfer>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

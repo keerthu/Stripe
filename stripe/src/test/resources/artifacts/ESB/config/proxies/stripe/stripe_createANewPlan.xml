@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_createANewPlan"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="name" expression="json-eval($.name)"/>    
+            <property name="planId" expression="json-eval($.planId)"/>
+            <property name="amount" expression="json-eval($.amount)"/>
+            <property name="currency" expression="json-eval($.currency)"/>
+            <property name="interval" expression="json-eval($.interval)"/>
+            <property name="intervalCount" expression="json-eval($.intervalCount)"/>
+            <property name="trialPeriodDays" expression="json-eval($.trialPeriodDays)"/>
+            <property name="statementDescription" expression="json-eval($.statementDescription)"/>
+            <property name="metadata" expression="json-eval($.metadata)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.createANewPlan>
+                <name>{$ctx:name}</name>
+                <planId>{$ctx:planId}</planId>
+                <amount>{$ctx:amount}</amount>
+                <currency>{$ctx:currency}</currency>
+                <interval>{$ctx:interval}</interval>
+                <intervalCount>{$ctx:intervalCount}</intervalCount>
+                <trialPeriodDays>{$ctx:trialPeriodDays}</trialPeriodDays>
+                <statementDescription>{$ctx:statementDescription}</statementDescription>
+                <metadata>{$ctx:metadata}</metadata>
+            </stripe.createANewPlan>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <currency/>
+</proxy>
+                                

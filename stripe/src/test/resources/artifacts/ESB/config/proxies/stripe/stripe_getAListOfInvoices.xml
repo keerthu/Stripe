@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_getAListOfInvoices"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         
+         <property name="customer" expression="json-eval($.customer)"/>
+         
+         <property name="endingBefore" expression="json-eval($.endingBefore)"/>
+         <property name="limit" expression="json-eval($.limit)"/>
+         <property name="startingAfter" expression="json-eval($.startingAfter)"/>
+         <property name="dateGT" expression="json-eval($.dateGT)"/>
+         <property name="dateGTE" expression="json-eval($.dateGTE)"/>
+         <property name="dateLT" expression="json-eval($.dateLT)"/>
+         <property name="dateLTE" expression="json-eval($.dateLTE)"/>
+         <property name="metadata" expression="json-eval($.metadata)"/>
+          <property name="apiKey" expression="json-eval($.apiKey)"/>
+          <stripe.init>
+              <apiKey>{$ctx:apiKey}</apiKey>
+          </stripe.init>
+         <stripe.getAListOfInvoices>
+            <customer>{$ctx:customer}</customer>
+            <endingBefore>{$ctx:endingBefore}</endingBefore>
+            <limit>{$ctx:limit}</limit>
+            <startingAfter>{$ctx:startingAfter}</startingAfter>
+            <dateGT>{$ctx:dateGT}</dateGT>
+            <dateGTE>{$ctx:dateGTE}</dateGTE>
+            <dateLT>{$ctx:dateLT}</dateLT>
+            <dateLTE>{$ctx:dateLTE}</dateLTE>
+         </stripe.getAListOfInvoices>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+   </target>
+   <startingAfter/>
+</proxy>
+                                	

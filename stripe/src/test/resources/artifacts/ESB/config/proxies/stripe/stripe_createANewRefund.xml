@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_createANewRefund"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="chargeId" expression="json-eval($.chargeId)"/>
+            <property name="amount" expression="json-eval($.amount)"/>
+            <property name="refundApplicationFee"
+                      expression="json-eval($.refundApplicationFee)"/>
+            <property name="reason" expression="json-eval($.reason)"/>
+            <property name="metadata" expression="json-eval($.metadata)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.createANewRefund>
+                <chargeId>{$ctx:chargeId}</chargeId>
+                <amount>{$ctx:amount}</amount>
+                <refundApplicationFee>{$ctx:refundApplicationFee}</refundApplicationFee>
+                <reason>{$ctx:reason}</reason>
+                <metadata>{$ctx:metadata}</metadata>
+            </stripe.createANewRefund>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>
+                                

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_balance" type="synapse/template">
+    <subComponents>
+        <component name="getCurrentAccountBalance">
+            <file>getCurrentAccountBalance.xml</file>
+            <description>Retrieves the current account balance</description>
+        </component>
+        <component name="retrieveABalanceTransaction">
+            <file>retrieveABalanceTransaction.xml</file>
+            <description>Retrieves the balance transaction with the given ID.</description>
+        </component>
+        <component name="getListOfBalanceHistory">
+            <file>getListOfBalanceHistory.xml</file>
+            <description>Returns a list of transactions that have contributed to the Stripe account balance</description>
+        </component>
+
+    </subComponents>
+</component>
+
+
+

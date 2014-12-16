@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_createTokenForBankAccount"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="country" expression="json-eval($.country)"/>
+            <property name="routingNumber" expression="json-eval($.routingNumber)"/>
+            <property name="accountNumber" expression="json-eval($.accountNumber)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.createTokenForBankAccount>
+                <country>{$ctx:country}</country>
+                <routingNumber>{$ctx:routingNumber}</routingNumber>
+                <accountNumber>{$ctx:accountNumber}</accountNumber>
+            </stripe.createTokenForBankAccount>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_retrieveAccountDetails"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+          <property name="apiKey" expression="json-eval($.apiKey)"/>
+          <stripe.init>
+              <apiKey>{$ctx:apiKey}</apiKey>
+          </stripe.init>
+         <stripe.retrieveAccountDetails/>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+   </target>
+   <description/>
+</proxy>

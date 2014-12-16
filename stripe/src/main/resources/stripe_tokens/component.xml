@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_tokens" type="synapse/template" >
+    <subComponents>
+        <component name="createTokenForCard">
+            <file>createTokenForCard.xml</file>
+            <description>Creates a card token that wraps the details of a credit card</description>
+        </component>
+        <component name="retrieveAnExistingToken">
+            <file>retrieveAnExistingToken.xml</file>
+            <description>Retrieves the token with the given ID</description>
+        </component>
+        <component name="createTokenForBankAccount">
+            <file>createTokenForBankAccount.xml</file>
+            <description>Creates a card token that wraps the details of a bank account</description>
+        </component>
+    </subComponents>
+</component>

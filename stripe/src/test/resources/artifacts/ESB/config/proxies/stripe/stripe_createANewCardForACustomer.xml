@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_createANewCardForACustomer"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="card" expression="json-eval($.card)"/>
+            <property name="cardNumber" expression="json-eval($.cardNumber)"/>
+            <property name="expMonth" expression="json-eval($.expMonth)"/>
+            <property name="expYear" expression="json-eval($.expYear)"/>
+            <property name="cvc" expression="json-eval($.cvc)"/>
+            <property name="name" expression="json-eval($.name)"/>
+            <property name="addressLine1" expression="json-eval($.addressLine1)"/>
+            <property name="addressLine2" expression="json-eval($.addressLine2)"/>
+            <property name="city" expression="json-eval($.city)"/>
+            <property name="zip" expression="json-eval($.zip)"/>
+            <property name="state" expression="json-eval($.state)"/>
+            <property name="country" expression="json-eval($.country)"/>
+            <property name="customerId" expression="json-eval($.customerId)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.createANewCardForACustomer>
+                <card>{$ctx:card}</card>
+                <cardNumber>{$ctx:cardNumber}</cardNumber>
+                <expMonth>{$ctx:expMonth}</expMonth>
+                <expYear>{$ctx:expYear}</expYear>
+                <cvc>{$ctx:cvc}</cvc>
+                <name>{$ctx:name}</name>
+                <addressLine1>{$ctx:addressLine1}</addressLine1>
+                <addressLine2>{$ctx:addressLine2}</addressLine2>
+                <city>{$ctx:cvc}</city>
+                <zip>{$ctx:zip}</zip>
+                <state>{$ctx:state}</state>
+                <country>{$ctx:country}</country>
+                <customerId>{$ctx:customerId}</customerId>
+            </stripe.createANewCardForACustomer>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

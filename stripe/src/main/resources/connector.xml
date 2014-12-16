@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector>
+    <component name="stripe" package="org.wso2.carbon.connector" >
+        <dependency component="stripe_config"/>
+        <dependency component="stripe_charges"/>
+        <dependency component="stripe_cards"/>
+        <dependency component="stripe_tokens"/>
+        <dependency component="stripe_customers"/>
+        <dependency component="stripe_refunds"/>
+        <dependency component="stripe_invoices"/>
+        <dependency component="stripe_transfers"/>
+        <dependency component="stripe_account"/>
+        <dependency component="stripe_balance"/>
+        <dependency component="stripe_recipients"/>
+        <dependency component="stripe_plans"/>
+        <dependency component="stripe_subscriptions"/>
+        <dependency component="stripe_invoiceItems"/>
+        <description>create and retrieve charges</description>
+    </component>
+</connector>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_updateACardDetails"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="uri.var.customerId" expression="json-eval($.customerId)"/>
+            <property name="uri.var.cardId" expression="json-eval($.cardId)"/>
+            <property name="uri.var.expMonth" expression="json-eval($.expMonth)"/>
+            <property name="uri.var.expYear" expression="json-eval($.expYear)"/>
+            <property name="uri.var.name" expression="json-eval($.name)"/>
+            <property name="uri.var.addressLine1" expression="json-eval($.addressLine1)"/>
+            <property name="uri.var.addressLine2" expression="json-eval($.addressLine2)"/>
+            <property name="uri.var.city" expression="json-eval($.city)"/>
+            <property name="uri.var.zip" expression="json-eval($.zip)"/>
+            <property name="uri.var.state" expression="json-eval($.state)"/>
+            <property name="uri.var.country" expression="json-eval($.country)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.updateACardDetails>
+                <cardId>{$ctx:cardId}</cardId>
+                <customerId>{$ctx:customerId}</customerId>
+                <expMonth>{$ctx:expMonth}</expMonth>
+                <expYear>{$ctx:expYear}</expYear>
+                <name>{$ctx:name}</name>
+                <addressLine1>{$ctx:addressLine1}</addressLine1>
+                <addressLine2>{$ctx:addressLine2}</addressLine2>
+                <city>{$ctx:city}</city>
+                <zip>{$ctx:zip}</zip>
+                <state>{$ctx:state}</state>
+                <country>{$ctx:country}</country>
+            </stripe.updateACardDetails>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

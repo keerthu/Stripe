@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_charges" type="synapse/template" >
+    <subComponents>
+        <component name="createANewCharge">
+            <file>createANewCharge.xml</file>
+            <description>Creates a new charge object</description>
+        </component>
+        <component name="retrieveAnExistingCharge">
+            <file>retrieveAnExistingCharge.xml</file>
+            <description>Retrieves the details of a charge that has previously been created</description>
+        </component>
+        <component name="updateAChargeDetails">
+            <file>updateAChargeDetails.xml</file>
+            <description>Updates the details of a specified charge</description>
+        </component>
+        <component name="captureACharge">
+            <file>captureACharge.xml</file>
+            <description>Capture the payment of an existing, uncaptured, charge</description>
+        </component>
+        <component name="getAListOfAllCharges">
+            <file>getAListOfAllCharges.xml</file>
+            <description>Returns a list of charges you've previously created</description>
+        </component>
+    </subComponents>
+</component>

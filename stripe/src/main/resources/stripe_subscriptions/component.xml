@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_subscriptions" type="synapse/template">
+    <subComponents>
+        <component name="createANewSubscription">
+            <file>createANewSubscription.xml</file>
+            <description>Creates a new subscription on an existing customer</description>
+        </component>
+    </subComponents>
+</component>
+
+
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_transfers" type="synapse/template">
+    <subComponents>
+        <component name="createATransfer">
+            <file>createATransfer.xml</file>
+            <description>To send funds from your Stripe account to a third-party recipient or to your own bank account</description>
+        </component>
+        <component name="retrieveAnExistingTransfer">
+            <file>retrieveAnExistingTransfer.xml</file>
+            <description>Retrieve the details of an existing transfer</description>
+        </component>
+        <component name="cancelATransfer">
+            <file>cancelATransfer.xml</file>
+            <description> Cancels a transfer that has previously been created </description>
+        </component>
+        <component name="updateAnExistingTransfer">
+            <file>updateAnExistingTransfer.xml</file>
+            <description>Updates the specified transfer</description>
+        </component>
+        <component name="getAListOfAllTransfers">
+            <file>getAListOfAllTransfers.xml</file>
+            <description>Returns a list of your transfers </description>
+        </component>
+    </subComponents>
+</component>
+
+
+

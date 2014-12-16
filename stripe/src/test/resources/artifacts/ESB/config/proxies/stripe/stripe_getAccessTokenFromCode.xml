@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_getAccessTokenFromCode"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="grantType" expression="json-eval($.grantType)"/>
+            <property name="code" expression="json-eval($.code)"/>
+            <property name="redirectUri" expression="json-eval($.redirectUri)"/>
+            <property name="clientSecret" expression="json-eval($.clientSecret)"/>
+            <stripe.getAccessTokenFromCode>
+                <grantType>{$ctx:grantType}</grantType>
+                <code>{$ctx:code}</code>
+                <redirectUri>{$ctx:redirectUri}</redirectUri>
+                <clientSecret>{$ctx:clientSecret}</clientSecret>
+            </stripe.getAccessTokenFromCode>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_updateAnInvoice"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="invoiceId" expression="json-eval($.invoiceId)"/>
+            <property name="applicationFee" expression="json-eval($.applicationFee)"/>
+            <property name="description" expression="json-eval($.description)"/>
+            <property name="statementDescription" expression="json-eval($.statementDescription)"/>
+            <property name="closed" expression="json-eval($.closed)"/>
+            <property name="forgiven" expression="json-eval($.forgiven)"/>
+            <property name="metadata" expression="json-eval($.metadata)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.updateAnInvoice>
+                <applicationFee>{$ctx:applicationFee}</applicationFee>
+                <invoiceId>{$ctx:invoiceId}</invoiceId>
+                <description>{$ctx:description}</description>
+                <statementDescription>{$ctx:statementDescription}</statementDescription>
+                <closed>{$ctx:closed}</closed>
+                <forgiven>{$ctx:forgiven}</forgiven>
+                <metadata>{$ctx:metadata}</metadata>
+            </stripe.updateAnInvoice>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

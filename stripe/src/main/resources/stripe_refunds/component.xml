@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_refunds" type="synapse/template">
+    <subComponents>
+        <component name="createANewRefund">
+            <file>createANewRefund.xml</file>
+            <description>Creates a new refund on a charge</description>
+        </component>
+        <component name="retrieveAnExistingRefund">
+            <file>retrieveAnExistingRefund.xml</file>
+            <description>Retrieves the details of an existing refunds stored on a charge</description>
+        </component>
+        <component name="updateRefundDetails">
+            <file>updateRefundDetails.xml</file>
+            <description>Updates the specified refund</description>
+        </component>
+        <component name="getAListOfAllRefunds">
+            <file>getAListOfAllRefunds.xml</file>
+            <description>Returns a list of the refunds belonging to a charge</description>
+        </component>
+
+    </subComponents>
+</component>
+
+
+

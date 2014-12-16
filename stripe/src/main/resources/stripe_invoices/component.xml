@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_invoices" type="synapse/template">
+    <subComponents>
+        <component name="createAnInvoice">
+            <file>createAnInvoice.xml</file>
+            <description>Creates a new invoice for a customer</description>
+        </component>
+        <component name="retrieveAnExistingInvoice">
+            <file>retrieveAnExistingInvoice.xml</file>
+            <description>Retrieves an invoice details</description>
+        </component>
+        <component name="retrieveAnInvoicesLineItems">
+            <file>retrieveAnInvoicesLineItems.xml</file>
+            <description>Retrieves an invoice's line items</description>
+        </component>
+        <component name="retrieveAnUpcomingInvoice">
+            <file>retrieveAnUpcomingInvoice.xml</file>
+            <description>Retrieves upcoming invoice for a customer</description>
+        </component>
+        <component name="updateAnInvoice">
+            <file>updateAnInvoice.xml</file>
+            <description>Updates an invoice</description>
+        </component>
+        <component name="getAListOfInvoices">
+            <file>getAListOfInvoices.xml</file>
+            <description>Returns a list of invoices for a specific customer</description>
+        </component>
+        <component name="payAnInvoice">
+            <file>payAnInvoice.xml</file>
+            <description>Pays an invoice</description>
+        </component>
+    </subComponents>
+</component>
+
+
+

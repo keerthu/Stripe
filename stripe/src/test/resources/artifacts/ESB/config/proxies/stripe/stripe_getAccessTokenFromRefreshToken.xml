@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_getAccessTokenFromRefreshToken"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="grantType" expression="json-eval($.grantType)"/>
+            <property name="refreshToken" expression="json-eval($.refreshToken)"/>
+            <property name="scope" expression="json-eval($.scope)"/>
+            <property name="clientSecret" expression="json-eval($.clientSecret)"/>
+            <stripe.getAccessTokenFromRefreshToken>
+                <grantType>{$ctx:grantType}</grantType>
+                <refreshToken>{$ctx:refreshToken}</refreshToken>
+                <scope>{$ctx:scope}</scope>
+                <clientSecret>{$ctx:clientSecret}</clientSecret>
+            </stripe.getAccessTokenFromRefreshToken>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_recipients" type="synapse/template">
+    <subComponents>
+        <component name="createANewRecipient">
+            <file>createANewRecipient.xml</file>
+            <description>Creates a new recipient</description>
+        </component>
+        <component name="retrieveAnExistingRecipient">
+            <file>retrieveAnExistingRecipient.xml</file>
+            <description>Retrieves the details of an existing recipient</description>
+        </component>
+        <component name="updateARecipientDetails">
+            <file>updateARecipientDetails.xml</file>
+            <description>Updates the specified recipient</description>
+        </component>
+        <component name="deleteAnExistingRecipient">
+            <file>deleteAnExistingRecipient.xml</file>
+            <description>Permanently deletes a recipient</description>
+        </component>
+        <component name="getAListOfAllRecipients">
+            <file>getAListOfAllRecipients.xml</file>
+            <description>Returns a list of your recipients</description>
+        </component>
+
+    </subComponents>
+</component>
+
+
+

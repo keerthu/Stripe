@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_config" type="synapse/template" >
+    <subComponents>
+        <component name="init">
+            <file>init.xml</file>
+            <description>initial configuration file for stripe connector</description>
+        </component>
+        <component name="getAccessTokenFromCode">
+            <file>getAccessTokenFromCode.xml</file>
+            <description>Getting Access Token from access code</description>
+        </component>
+        <component name="getAccessTokenFromRefreshToken">
+            <file>getAccessTokenFromRefreshToken.xml</file>
+            <description>Getting Access Token from refresh token</description>
+        </component>
+        <component name="deAuthorizeAnAccessToken">
+            <file>deAuthorizeAnAccessToken.xml</file>
+            <description>Revokes access to an account</description>
+        </component>
+    </subComponents>
+</component>

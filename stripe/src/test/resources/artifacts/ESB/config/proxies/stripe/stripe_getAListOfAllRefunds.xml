@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_getAListOfAllRefunds"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="chargeId" expression="json-eval($.chargeId)"/>
+            <property name="endingBefore" expression="json-eval($.endingBefore)"/>
+            <property name="limit" expression="json-eval($.limit)"/>
+            <property name="startingAfter" expression="json-eval($.startingAfter)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.getAListOfAllRefunds>
+                <chargeId>{$ctx:chargeId}</chargeId>
+                <endingBefore>{$ctx:endingBefore}</endingBefore>
+                <limit>{$ctx:limit}</limit>
+                <startingAfter>{$ctx:startingAfter}</startingAfter>
+            </stripe.getAListOfAllRefunds>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

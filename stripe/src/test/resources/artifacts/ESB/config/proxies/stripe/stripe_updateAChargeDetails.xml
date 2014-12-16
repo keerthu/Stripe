@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_updateAChargeDetails"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <property name="uri.var.chargeId" expression="json-eval($.chargeId)"/>
+         <property name="uri.var.metadata" expression="json-eval($.metadata)"/>
+         <property name="uri.var.description" expression="json-eval($.description)"/>
+          <property name="apiKey" expression="json-eval($.apiKey)"/>
+          <stripe.init>
+              <apiKey>{$ctx:apiKey}</apiKey>
+          </stripe.init>
+         <stripe.updateAChargeDetails>
+            <chargeId>{$ctx:chargeId}</chargeId>
+            <metadata>{$ctx:metadata}</metadata>
+            <description>{$ctx:description}</description>
+         </stripe.updateAChargeDetails>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+   </target>
+   <description/>
+</proxy>
+                                

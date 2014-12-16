@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_plans" type="synapse/template">
+    <subComponents>
+        <component name="createANewPlan">
+            <file>createANewPlan.xml</file>
+            <description>Create subscription plan contains the pricing information</description>
+        </component>
+    </subComponents>
+</component>
+
+
+

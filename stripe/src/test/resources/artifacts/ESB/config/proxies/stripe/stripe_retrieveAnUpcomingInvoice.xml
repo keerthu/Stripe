@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_retrieveAnUpcomingInvoice"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <property name="customer" expression="json-eval($.customer)"/>
+         <property name="subscription" expression="json-eval($.subscription)"/>
+          <property name="apiKey" expression="json-eval($.apiKey)"/>
+          <stripe.init>
+              <apiKey>{$ctx:apiKey}</apiKey>
+          </stripe.init>
+         <stripe.retrieveAnUpcomingInvoice>
+            <customer>{$ctx:customer}</customer>
+            <subscription>{$ctx:subscription}</subscription>
+         </stripe.retrieveAnUpcomingInvoice>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+   </target>
+   <startingAfter/>
+</proxy>
+                                	

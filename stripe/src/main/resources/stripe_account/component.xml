@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_account" type="synapse/template">
+    <subComponents>
+        <component name="retrieveAccountDetails">
+            <file>retrieveAccountDetails.xml</file>
+            <description>Retrieves the details of the account</description>
+        </component>
+    </subComponents>
+</component>
+
+
+

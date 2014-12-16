@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="stripe_getListOfBalanceHistory"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="currency" expression="json-eval($.currency)"/>
+            <property name="source" expression="json-eval($.source)"/>
+            <property name="transfer" expression="json-eval($.transfer)"/>
+            <property name="type" expression="json-eval($.type)"/>
+            <property name="endingBefore" expression="json-eval($.endingBefore)"/>
+            <property name="limit" expression="json-eval($.limit)"/>
+            <property name="startingAfter" expression="json-eval($.startingAfter)"/>
+            <property name="createdGT" expression="json-eval($.createdGT)"/>
+            <property name="createdGTE" expression="json-eval($.createdGTE)"/>
+            <property name="createdLT" expression="json-eval($.createdLT)"/>
+            <property name="createdLTE" expression="json-eval($.createdLTE)"/>
+            <property name="availableOnGT" expression="json-eval($.availableOnGT)"/>
+            <property name="availableOnGTE" expression="json-eval($.availableOnGTE)"/>
+            <property name="availableOnLT" expression="json-eval($.availableOnLT)"/>
+            <property name="availableOnLTE" expression="json-eval($.availableOnLTE)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <stripe.init>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </stripe.init>
+            <stripe.getListOfBalanceHistory>
+                <currency>{$ctx:currency}</currency>
+                <source>{$ctx:source}</source>
+                <transfer>{$ctx:transfer}</transfer>
+                <type>{$ctx:type}</type>
+                <endingBefore>{$ctx:endingBefore}</endingBefore>
+                <limit>{$ctx:limit}</limit>
+                <startingAfter>{$ctx:startingAfter}</startingAfter>
+                <createdGT>{$ctx:createdGT}</createdGT>
+                <createdGTE>{$ctx:createdGTE}</createdGTE>
+                <createdLT>{$ctx:createdLT}</createdLT>
+                <createdLTE>{$ctx:createdLTE}</createdLTE>
+                <availableOnGT>{$ctx:availableOnGT}</availableOnGT>
+                <availableOnGTE>{$ctx:availableOnGTE}</availableOnGTE>
+                <availableOnLT>{$ctx:availableOnLT}</availableOnLT>
+                <availableOnLTE>{$ctx:availableOnLTE}</availableOnLTE>
+            </stripe.getListOfBalanceHistory>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

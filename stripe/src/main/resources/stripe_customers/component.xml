@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="stripe_customers" type="synapse/template">
+    <subComponents>
+        <component name="createANewCustomer">
+            <file>createANewCustomer.xml</file>
+            <description>Creates a new customer</description>
+        </component>
+        <component name="retrieveAnExistingCustomer">
+            <file>retrieveAnExistingCustomer.xml</file>
+            <description>Retrieves the details of an existing customer</description>
+        </component>
+        <component name="updateACustomerDetails">
+            <file>updateACustomerDetails.xml</file>
+            <description>Updates the details of a specific customer</description>
+        </component>
+            <component name="deleteAnExistingCustomer">
+            <file>deleteAnExistingCustomer.xml</file>
+            <description>Permanently deletes a customer object</description>
+        </component>
+        <component name="getAListOfAllCustomers">
+            <file>getAListOfAllCustomers.xml</file>
+            <description>Returns a list of your customers</description>
+        </component>
+
+    </subComponents>
+</component>
+
+
+
