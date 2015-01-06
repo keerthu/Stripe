@@ -1,5 +1,5 @@
 {
 "apiKey":"%s",
-"chargeId":"ch_15AEwHDpl35Wu2uijFIRjhtB",
+"chargeId":"ch_15AEwHDpl35WIRjhtB",
 "amount":"50"
 }

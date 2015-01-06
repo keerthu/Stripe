@@ -7,7 +7,7 @@ Pre-requisites:
 Tested Platform: 
 
 - Mac OSx 10.9
-- WSO2 ESB wso2esb-4.9.0-SNAPSHOT
+- WSO2 ESB wso2esb-4.8.1
 - Java 1.7
 
 STEPS:

@@ -1,93 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-~  Licensed to the Apache Software Foundation (ASF) under one
-~  or more contributor license agreements.  See the NOTICE file
-~  distributed with this work for additional information
-~  regarding copyright ownership.  The ASF licenses this file
-~  to you under the Apache License, Version 2.0 (the
-~  "License"); you may not use this file except in compliance
-~  with the License.  You may obtain a copy of the License at
-~
-~   http://www.apache.org/licenses/LICENSE-2.0
-~
-~  Unless required by applicable law or agreed to in writing,
-~  software distributed under the License is distributed on an
-~   * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-~  KIND, either express or implied.  See the License for the
-~  specific language governing permissions and limitations
-~  under the License.
+Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*
+*  WSO2 Inc. licenses this file to you under the Apache License,
+*  Version 2.0 (the "License"); you may not use this file except
+*  in compliance with the License.
+*  You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
 -->
 <template name="createANewCharge" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="card" description="A card to be charged. "/>
-    <parameter name="customer" description="The ID of an existing customer that will be charged in this request"/>
-    <parameter name="amount" description="Amount to charge the card"/>
-    <parameter name="currency" description="3-letter ISO code for currency."/>
-    <parameter name="description" description="description of the charge"/>
-    <parameter name="receiptEmail" description="The email address to send this charge's receipt to"/>
-    <parameter name="capture" description="The identifier of the capture to subscribe the customer to"/>
-    <parameter name="statementDescription" description="An arbitrary string to be displayed alongside your company name on your customer's credit card statement"/>
-    <parameter name="applicationFee" description="A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account"/>
-    <!--parameters for card library -->
-    <parameter name="cardNumber" description="The card number, as a string without any separators"/>
-    <parameter name="expMonth" description="card's expiration month"/>
-    <parameter name="expYear" description="card's expiration year"/>
-    <parameter name="cvc" description="Card security code"/>
-    <parameter name="name" description="Cardholder's full name"/>
-    <parameter name="addressLine1" description="Address line 1"/>
-    <parameter name="addressLine2" description="Address line 2"/>
-    <parameter name="city" description="city of the address"/>
-    <parameter name="zip" description="zip of the address"/>
-    <parameter name="state" description="state of the address"/>
-    <parameter name="country" description="country of the address"/>
-    <!--parameters for shipping -->
-    <parameter name="shippingName" description="Recipient name"/>
-    <parameter name="shippingPhone" description="Recipient phone"/>
-    <parameter name="shippingAddressLine1" description="Shipping address address line 1"/>
-    <parameter name="shippingAddressLine2" description="Shipping address address line 2"/>
-    <parameter name="shippingAddressCity" description="city of the shipping address"/>
-    <parameter name="shippingAddressState" description="state of the shipping address"/>
-    <parameter name="shippingAddressPostalCode" description="postal code of the shipping address"/>
-    <parameter name="shippingAddressCountry" description="country of the shipping address"/>
-    <parameter name="metadata" description="A set of key/value pairs that you can attach to a customer object."/>
-    <sequence>
-        <property name="uri.var.customer" expression="$func:customer"/>
-        <property name="uri.var.card" expression="$func:card"/>
-        <property name="uri.var.amount" expression="$func:amount"/>
-        <property name="uri.var.currency" expression="$func:currency"/>
-        <property name="uri.var.description" expression="$func:description"/>
-        <property name="uri.var.receiptEmail" expression="$func:receiptEmail"/>
-        <property name="uri.var.capture" expression="$func:capture"/>
-        <property name="uri.var.statementDescription" expression="$func:statementDescription"/>
-        <property name="uri.var.applicationFee" expression="$func:applicationFee"/>
-        <property name="uri.var.metadata" expression="$func:metadata"/>
-        <property name="uri.var.cardNumber" expression="$func:cardNumber"/>
-        <property name="uri.var.expMonth" expression="$func:expMonth"/>
-        <property name="uri.var.expYear" expression="$func:expYear"/>
-        <property name="uri.var.cvc" expression="$func:cvc"/>
-        <property name="uri.var.name" expression="$func:name"/>
-        <property name="uri.var.addressLine1" expression="$func:addressLine1"/>
-        <property name="uri.var.addressLine2" expression="$func:addressLine2"/>
-        <property name="uri.var.city" expression="$func:city"/>
-        <property name="uri.var.zip" expression="$func:zip"/>
-        <property name="uri.var.state" expression="$func:state"/>
-        <property name="uri.var.country" expression="$func:country"/>
-        <property name="uri.var.shippingName" expression="$func:shippingName"/>
-        <property name="uri.var.shippingPhone" expression="$func:shippingPhone"/>
-        <property name="uri.var.shippingAddressLine1" expression="$func:shippingAddressLine1"/>
-        <property name="uri.var.shippingAddressLine2" expression="$func:shippingAddressLine2"/>
-        <property name="uri.var.shippingAddressCity" expression="$func:shippingAddressCity"/>
-        <property name="uri.var.shippingAddressState" expression="$func:shippingAddressState"/>
-        <property name="uri.var.shippingAddressPostalCode" expression="$func:shippingAddressPostalCode"/>
-        <property name="uri.var.shippingAddressCountry" expression="$func:shippingAddressCountry"/>
-        <payloadFactory media-type="json">
-            <format>
-                {
+   <parameter name="card" description="A card to be charged. "/>
+   <parameter name="customer" description="The ID of an existing customer that will be charged in this request"/>
+   <parameter name="amount" description="Amount to charge the card"/>
+   <parameter name="currency" description="3-letter ISO code for currency."/>
+   <parameter name="description" description="description of the charge"/>
+   <parameter name="receiptEmail" description="The email address to send this charge's receipt to"/>
+   <parameter name="capture" description="The identifier of the capture to subscribe the customer to"/>
+   <parameter name="statementDescription"
+              description="An arbitrary string to be displayed alongside your company name on your customer's credit card statement"/>
+   <parameter name="applicationFee"
+              description="A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account"/>
+   <!--parameters for card library -->
+   <parameter name="cardNumber" description="The card number, as a string without any separators"/>
+   <parameter name="expMonth" description="card's expiration month"/>
+   <parameter name="expYear" description="card's expiration year"/>
+   <parameter name="cvc" description="Card security code"/>
+   <parameter name="name" description="Cardholder's full name"/>
+   <parameter name="addressLine1" description="Address line 1"/>
+   <parameter name="addressLine2" description="Address line 2"/>
+   <parameter name="city" description="city of the address"/>
+   <parameter name="zip" description="zip of the address"/>
+   <parameter name="state" description="state of the address"/>
+   <parameter name="country" description="country of the address"/>
+   <!--parameters for shipping -->
+   <parameter name="shippingName" description="Recipient name"/>
+   <parameter name="shippingPhone" description="Recipient phone"/>
+   <parameter name="shippingAddressLine1" description="Shipping address address line 1"/>
+   <parameter name="shippingAddressLine2" description="Shipping address address line 2"/>
+   <parameter name="shippingAddressCity" description="city of the shipping address"/>
+   <parameter name="shippingAddressState" description="state of the shipping address"/>
+   <parameter name="shippingAddressPostalCode" description="postal code of the shipping address"/>
+   <parameter name="shippingAddressCountry" description="country of the shipping address"/>
+   <parameter name="metadata" description="A set of key/value pairs that you can attach to a customer object."/>
+   <sequence>
+      <property name="uri.var.customer" expression="$func:customer"/>
+      <property name="uri.var.card" expression="$func:card"/>
+      <property name="uri.var.amount" expression="$func:amount"/>
+      <property name="uri.var.currency" expression="$func:currency"/>
+      <property name="uri.var.description" expression="$func:description"/>
+      <property name="uri.var.receiptEmail" expression="$func:receiptEmail"/>
+      <property name="uri.var.capture" expression="$func:capture"/>
+      <property name="uri.var.statementDescription" expression="$func:statementDescription"/>
+      <property name="uri.var.applicationFee" expression="$func:applicationFee"/>
+      <property name="uri.var.metadata" expression="$func:metadata"/>
+      <property name="uri.var.cardNumber" expression="$func:cardNumber"/>
+      <property name="uri.var.expMonth" expression="$func:expMonth"/>
+      <property name="uri.var.expYear" expression="$func:expYear"/>
+      <property name="uri.var.cvc" expression="$func:cvc"/>
+      <property name="uri.var.name" expression="$func:name"/>
+      <property name="uri.var.addressLine1" expression="$func:addressLine1"/>
+      <property name="uri.var.addressLine2" expression="$func:addressLine2"/>
+      <property name="uri.var.city" expression="$func:city"/>
+      <property name="uri.var.zip" expression="$func:zip"/>
+      <property name="uri.var.state" expression="$func:state"/>
+      <property name="uri.var.country" expression="$func:country"/>
+      <property name="uri.var.shippingName" expression="$func:shippingName"/>
+      <property name="uri.var.shippingPhone" expression="$func:shippingPhone"/>
+      <property name="uri.var.shippingAddressLine1" expression="$func:shippingAddressLine1"/>
+      <property name="uri.var.shippingAddressLine2" expression="$func:shippingAddressLine2"/>
+      <property name="uri.var.shippingAddressCity" expression="$func:shippingAddressCity"/>
+      <property name="uri.var.shippingAddressState" expression="$func:shippingAddressState"/>
+      <property name="uri.var.shippingAddressPostalCode" expression="$func:shippingAddressPostalCode"/>
+      <property name="uri.var.shippingAddressCountry" expression="$func:shippingAddressCountry"/>
+      <payloadFactory media-type="json">
+         <format>
+            {
 
-                }
-            </format>
-        </payloadFactory>
-        <script language="js">
-            <![CDATA[
+            }
+         </format>
+      </payloadFactory>
+      <script language="js">
+         <![CDATA[
 				//request body param variables
 				var card = mc.getProperty('uri.var.card');
 				var customer = mc.getProperty('uri.var.customer');
@@ -220,13 +221,13 @@
 				//Set the newly constructed payload
 				mc.setPayloadJSON(payload);
 			]]>
-        </script>
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
-        <call>
-            <endpoint>
-                <http method="post"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/charges" />
-            </endpoint>
-        </call>
-    </sequence>
+      </script>
+      <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
+      <call>
+         <endpoint>
+            <http method="post"
+                  uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/charges"/>
+         </endpoint>
+      </call>
+   </sequence>
 </template>

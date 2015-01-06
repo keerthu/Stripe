@@ -36,191 +36,190 @@ import org.wso2.carbon.mediation.library.stub.upload.MediationLibraryUploaderStu
 import org.wso2.carbon.mediation.library.stub.upload.types.carbon.LibraryFileItem;
 
 public class ConnectorIntegrationUtil {
-    public static final String ESB_CONFIG_LOCATION = "artifacts" + File.separator + "ESB" + File.separator + "config";
+   public static final String ESB_CONFIG_LOCATION = "artifacts" + File.separator + "ESB" + File.separator + "config";
 
-    private static final Log log = LogFactory.getLog(ConnectorIntegrationUtil.class);
+   private static final Log log = LogFactory.getLog(ConnectorIntegrationUtil.class);
 
-    public static void uploadConnector(String repoLocation, MediationLibraryUploaderStub mediationLibUploadStub,
-                                       String strFileName) throws MalformedURLException, RemoteException {
+   public static void uploadConnector(String repoLocation, MediationLibraryUploaderStub mediationLibUploadStub,
+                                      String strFileName) throws MalformedURLException, RemoteException {
 
-        List<LibraryFileItem> uploadLibraryInfoList = new ArrayList<LibraryFileItem>();
-        LibraryFileItem uploadedFileItem = new LibraryFileItem();
-        uploadedFileItem.setDataHandler(new DataHandler(new URL("file:" + "///" + repoLocation + "/" + strFileName)));
-        uploadedFileItem.setFileName(strFileName);
-        uploadedFileItem.setFileType("zip");
-        uploadLibraryInfoList.add(uploadedFileItem);
-        LibraryFileItem[] uploadServiceTypes = new LibraryFileItem[uploadLibraryInfoList.size()];
-        uploadServiceTypes = uploadLibraryInfoList.toArray(uploadServiceTypes);
-        mediationLibUploadStub.uploadLibrary(uploadServiceTypes);
-    }
+      List<LibraryFileItem> uploadLibraryInfoList = new ArrayList<LibraryFileItem>();
+      LibraryFileItem uploadedFileItem = new LibraryFileItem();
+      uploadedFileItem.setDataHandler(new DataHandler(new URL("file:" + "///" + repoLocation + "/" + strFileName)));
+      uploadedFileItem.setFileName(strFileName);
+      uploadedFileItem.setFileType("zip");
+      uploadLibraryInfoList.add(uploadedFileItem);
+      LibraryFileItem[] uploadServiceTypes = new LibraryFileItem[uploadLibraryInfoList.size()];
+      uploadServiceTypes = uploadLibraryInfoList.toArray(uploadServiceTypes);
+      mediationLibUploadStub.uploadLibrary(uploadServiceTypes);
+   }
 
-    public static int sendRequestToRetriveHeaders(String addUrl, String query) throws IOException, JSONException {
+   public static int sendRequestToRetriveHeaders(String addUrl, String query) throws IOException, JSONException {
 
-        String charset = "UTF-8";
-        URLConnection connection = new URL(addUrl).openConnection();
-        connection.setDoOutput(true);
-        connection.setRequestProperty("Accept-Charset", charset);
-        connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+      String charset = "UTF-8";
+      URLConnection connection = new URL(addUrl).openConnection();
+      connection.setDoOutput(true);
+      connection.setRequestProperty("Accept-Charset", charset);
+      connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
 
-        OutputStream output = null;
-        try {
-            output = connection.getOutputStream();
-            output.write(query.getBytes(charset));
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException logOrIgnore) {
-                    log.error("Error while closing the connection");
-                }
+      OutputStream output = null;
+      try {
+         output = connection.getOutputStream();
+         output.write(query.getBytes(charset));
+      } finally {
+         if (output != null) {
+            try {
+               output.close();
+            } catch (IOException logOrIgnore) {
+               log.error("Error while closing the connection");
             }
-        }
+         }
+      }
 
-        HttpURLConnection httpConn = (HttpURLConnection) connection;
-        int responseCode = httpConn.getResponseCode();
+      HttpURLConnection httpConn = (HttpURLConnection) connection;
+      int responseCode = httpConn.getResponseCode();
 
-        return responseCode;
-    }
+      return responseCode;
+   }
 
-    public static int sendRequestToRetriveHeaders(String addUrl, String query, String contentType) throws IOException,
-            JSONException {
+   public static int sendRequestToRetriveHeaders(String addUrl, String query, String contentType) throws IOException,
+         JSONException {
 
-        String charset = "UTF-8";
-        URLConnection connection = new URL(addUrl).openConnection();
-        connection.setDoOutput(true);
-        connection.setRequestProperty("Accept-Charset", charset);
-        connection.setRequestProperty("Content-Type", contentType + ";charset=" + charset);
+      String charset = "UTF-8";
+      URLConnection connection = new URL(addUrl).openConnection();
+      connection.setDoOutput(true);
+      connection.setRequestProperty("Accept-Charset", charset);
+      connection.setRequestProperty("Content-Type", contentType + ";charset=" + charset);
 
-        OutputStream output = null;
-        try {
-            output = connection.getOutputStream();
-            output.write(query.getBytes(charset));
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException logOrIgnore) {
-                    log.error("Error while closing the connection");
-                }
+      OutputStream output = null;
+      try {
+         output = connection.getOutputStream();
+         output.write(query.getBytes(charset));
+      } finally {
+         if (output != null) {
+            try {
+               output.close();
+            } catch (IOException logOrIgnore) {
+               log.error("Error while closing the connection");
             }
-        }
+         }
+      }
 
-        HttpURLConnection httpConn = (HttpURLConnection) connection;
-        int responseCode = httpConn.getResponseCode();
+      HttpURLConnection httpConn = (HttpURLConnection) connection;
+      int responseCode = httpConn.getResponseCode();
 
-        return responseCode;
-    }
+      return responseCode;
+   }
 
-    public static String sendRequest_String(String addUrl, String query) throws IOException, JSONException {
+   public static String sendRequest_String(String addUrl, String query) throws IOException, JSONException {
 
-        String charset = "UTF-8";
-        URLConnection connection = new URL(addUrl).openConnection();
-        connection.setDoOutput(true);
-        connection.setRequestProperty("Accept-Charset", charset);
-        connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
-        OutputStream output = null;
-        try {
-            output = connection.getOutputStream();
-            output.write(query.getBytes(charset));
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException logOrIgnore) {
-                    log.error("Error while closing the connection");
-                }
+      String charset = "UTF-8";
+      URLConnection connection = new URL(addUrl).openConnection();
+      connection.setDoOutput(true);
+      connection.setRequestProperty("Accept-Charset", charset);
+      connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+      OutputStream output = null;
+      try {
+         output = connection.getOutputStream();
+         output.write(query.getBytes(charset));
+      } finally {
+         if (output != null) {
+            try {
+               output.close();
+            } catch (IOException logOrIgnore) {
+               log.error("Error while closing the connection");
             }
-        }
+         }
+      }
 
-        HttpURLConnection httpConn = (HttpURLConnection) connection;
-        InputStream response;
+      HttpURLConnection httpConn = (HttpURLConnection) connection;
+      InputStream response;
 
-        if (httpConn.getResponseCode() >= 400) {
-            response = httpConn.getErrorStream();
-        } else {
-            response = connection.getInputStream();
-        }
+      if (httpConn.getResponseCode() >= 400) {
+         response = httpConn.getErrorStream();
+      } else {
+         response = connection.getInputStream();
+      }
 
-        String out = "{}";
-        if (response != null) {
-            StringBuilder sb = new StringBuilder();
-            byte[] bytes = new byte[1024];
-            int len;
-            while ((len = response.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, len));
+      String out = "{}";
+      if (response != null) {
+         StringBuilder sb = new StringBuilder();
+         byte[] bytes = new byte[1024];
+         int len;
+         while ((len = response.read(bytes)) != -1) {
+            sb.append(new String(bytes, 0, len));
+         }
+
+         if (!sb.toString().trim().isEmpty()) {
+            out = sb.toString();
+         }
+      }
+
+
+      return out;
+   }
+
+   public static JSONObject sendRequest(String addUrl, String query) throws IOException, JSONException {
+
+      String charset = "UTF-8";
+      URLConnection connection = new URL(addUrl).openConnection();
+      connection.setDoOutput(true);
+      connection.setRequestProperty("Accept-Charset", charset);
+      connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+      //connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+      OutputStream output = null;
+      try {
+         output = connection.getOutputStream();
+         output.write(query.getBytes(charset));
+      } finally {
+         if (output != null) {
+            try {
+               output.close();
+            } catch (IOException logOrIgnore) {
+               log.error("Error while closing the connection");
             }
+         }
+      }
 
-            if (!sb.toString().trim().isEmpty()) {
-                out = sb.toString();
-            }
-        }
+      HttpURLConnection httpConn = (HttpURLConnection) connection;
+      InputStream response;
 
+      if (httpConn.getResponseCode() >= 400) {
+         response = httpConn.getErrorStream();
+      } else {
+         response = connection.getInputStream();
+      }
 
+      String out = "{}";
+      if (response != null) {
+         StringBuilder sb = new StringBuilder();
+         byte[] bytes = new byte[1024];
+         int len;
+         while ((len = response.read(bytes)) != -1) {
+            sb.append(new String(bytes, 0, len));
+         }
 
-        return out;
-    }
+         if (!sb.toString().trim().isEmpty()) {
+            out = sb.toString();
+         }
+      }
 
-    public static JSONObject sendRequest(String addUrl, String query) throws IOException, JSONException {
+      JSONObject jsonObject = new JSONObject(out);
 
-        String charset = "UTF-8";
-        URLConnection connection = new URL(addUrl).openConnection();
-        connection.setDoOutput(true);
-        connection.setRequestProperty("Accept-Charset", charset);
-        connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
-        //connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        OutputStream output = null;
-        try {
-            output = connection.getOutputStream();
-            output.write(query.getBytes(charset));
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException logOrIgnore) {
-                    log.error("Error while closing the connection");
-                }
-            }
-        }
+      return jsonObject;
+   }
 
-        HttpURLConnection httpConn = (HttpURLConnection) connection;
-        InputStream response;
+   public static JSONObject sendGetRequest(String addUrl) throws IOException, JSONException {
 
-        if (httpConn.getResponseCode() >= 400) {
-            response = httpConn.getErrorStream();
-        } else {
-            response = connection.getInputStream();
-        }
+      String charset = "UTF-8";
+      URLConnection connection = new URL(addUrl).openConnection();
 
-        String out = "{}";
-        if (response != null) {
-            StringBuilder sb = new StringBuilder();
-            byte[] bytes = new byte[1024];
-            int len;
-            while ((len = response.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, len));
-            }
+      //connection.setDoOutput(true);
 
-            if (!sb.toString().trim().isEmpty()) {
-                out = sb.toString();
-            }
-        }
-
-        JSONObject jsonObject = new JSONObject(out);
-
-        return jsonObject;
-    }
-
-    public static JSONObject sendGetRequest(String addUrl) throws IOException, JSONException {
-
-        String charset = "UTF-8";
-        URLConnection connection = new URL(addUrl).openConnection();
-
-        //connection.setDoOutput(true);
-
-        connection.setRequestProperty("Accept-Charset", charset);
-        //connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("Authorization", "Bearer sk_test_Gd3JGidPIzfPkMOC8ZGnPEdf");
-        connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+      connection.setRequestProperty("Accept-Charset", charset);
+      //connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+      connection.setRequestProperty("Authorization", "Bearer sk_test_Gd3JGidPIzfPkMOC8ZGnPEdf");
+      connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
 //        OutputStream output = null;
 //        try {
 //            output = connection.getOutputStream();
@@ -235,241 +234,242 @@ public class ConnectorIntegrationUtil {
 //            }
 //        }
 
-        HttpURLConnection httpConn = (HttpURLConnection) connection;
-        InputStream response;
+      HttpURLConnection httpConn = (HttpURLConnection) connection;
+      InputStream response;
 
-        if (httpConn.getResponseCode() >= 400) {
-            response = httpConn.getErrorStream();
-        } else {
-            response = connection.getInputStream();
-        }
+      if (httpConn.getResponseCode() >= 400) {
+         response = httpConn.getErrorStream();
+      } else {
+         response = connection.getInputStream();
+      }
 
-        String out = "{}";
-        if (response != null) {
-            StringBuilder sb = new StringBuilder();
-            byte[] bytes = new byte[1024];
-            int len;
-            while ((len = response.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, len));
-            }
+      String out = "{}";
+      if (response != null) {
+         StringBuilder sb = new StringBuilder();
+         byte[] bytes = new byte[1024];
+         int len;
+         while ((len = response.read(bytes)) != -1) {
+            sb.append(new String(bytes, 0, len));
+         }
 
-            if (!sb.toString().trim().isEmpty()) {
-                out = sb.toString();
-            }
-        }
+         if (!sb.toString().trim().isEmpty()) {
+            out = sb.toString();
+         }
+      }
 
-        JSONObject jsonObject = new JSONObject(out);
+      JSONObject jsonObject = new JSONObject(out);
 
-        return jsonObject;
-    }
-    public static JSONObject sendRequest(String addUrl) throws IOException, JSONException {
+      return jsonObject;
+   }
 
-        String charset = "UTF-8";
-        URLConnection connection = new URL(addUrl).openConnection();
-        connection.setDoOutput(true);
-        connection.setRequestProperty("Accept-Charset", charset);
+   public static JSONObject sendRequest(String addUrl) throws IOException, JSONException {
+
+      String charset = "UTF-8";
+      URLConnection connection = new URL(addUrl).openConnection();
+      connection.setDoOutput(true);
+      connection.setRequestProperty("Accept-Charset", charset);
 //        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("Authorization", "Bearer sk_test_Gd3JGidPIzfPkMOC8ZGnPEdf");
-        connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
-        OutputStream output = null;
-        try {
-            output = connection.getOutputStream();
-            //output.write(query.getBytes(charset));
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException logOrIgnore) {
-                    log.error("Error while closing the connection");
-                }
+      connection.setRequestProperty("Authorization", "Bearer sk_test_Gd3JGidPIzfPkMOC8ZGnPEdf");
+      connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+      OutputStream output = null;
+      try {
+         output = connection.getOutputStream();
+         //output.write(query.getBytes(charset));
+      } finally {
+         if (output != null) {
+            try {
+               output.close();
+            } catch (IOException logOrIgnore) {
+               log.error("Error while closing the connection");
             }
-        }
+         }
+      }
 
-        HttpURLConnection httpConn = (HttpURLConnection) connection;
-        InputStream response;
+      HttpURLConnection httpConn = (HttpURLConnection) connection;
+      InputStream response;
 
-        if (httpConn.getResponseCode() >= 400) {
-            response = httpConn.getErrorStream();
-        } else {
-            response = connection.getInputStream();
-        }
+      if (httpConn.getResponseCode() >= 400) {
+         response = httpConn.getErrorStream();
+      } else {
+         response = connection.getInputStream();
+      }
 
-        String out = "{}";
-        if (response != null) {
-            StringBuilder sb = new StringBuilder();
-            byte[] bytes = new byte[1024];
-            int len;
-            while ((len = response.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, len));
+      String out = "{}";
+      if (response != null) {
+         StringBuilder sb = new StringBuilder();
+         byte[] bytes = new byte[1024];
+         int len;
+         while ((len = response.read(bytes)) != -1) {
+            sb.append(new String(bytes, 0, len));
+         }
+
+         if (!sb.toString().trim().isEmpty()) {
+            out = sb.toString();
+         }
+      }
+
+      JSONObject jsonObject = new JSONObject(out);
+
+      return jsonObject;
+   }
+
+   public static OMElement sendXMLRequest(String addUrl, String query) throws MalformedURLException, IOException,
+         XMLStreamException {
+
+      String charset = "UTF-8";
+      URLConnection connection = new URL(addUrl).openConnection();
+      connection.setDoOutput(true);
+      connection.setRequestProperty("Accept-Charset", charset);
+      connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+      OutputStream output = null;
+      try {
+         output = connection.getOutputStream();
+         output.write(query.getBytes(charset));
+      } finally {
+         if (output != null) {
+            try {
+               output.close();
+            } catch (IOException logOrIgnore) {
+               log.error("Error while closing the connection");
             }
+         }
+      }
 
-            if (!sb.toString().trim().isEmpty()) {
-                out = sb.toString();
-            }
-        }
+      HttpURLConnection httpConn = (HttpURLConnection) connection;
+      InputStream response;
 
-        JSONObject jsonObject = new JSONObject(out);
+      if (httpConn.getResponseCode() >= 400) {
+         response = httpConn.getErrorStream();
+      } else {
+         response = connection.getInputStream();
+      }
 
-        return jsonObject;
-    }
+      String out = "{}";
+      if (response != null) {
+         StringBuilder sb = new StringBuilder();
+         byte[] bytes = new byte[1024];
+         int len;
+         while ((len = response.read(bytes)) != -1) {
+            sb.append(new String(bytes, 0, len));
+         }
 
-    public static OMElement sendXMLRequest(String addUrl, String query) throws MalformedURLException, IOException,
-            XMLStreamException {
+         if (!sb.toString().trim().isEmpty()) {
+            out = sb.toString();
+         }
+      }
 
-        String charset = "UTF-8";
-        URLConnection connection = new URL(addUrl).openConnection();
-        connection.setDoOutput(true);
-        connection.setRequestProperty("Accept-Charset", charset);
-        connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
-        OutputStream output = null;
-        try {
-            output = connection.getOutputStream();
-            output.write(query.getBytes(charset));
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException logOrIgnore) {
-                    log.error("Error while closing the connection");
-                }
-            }
-        }
+      OMElement omElement = AXIOMUtil.stringToOM(out);
 
-        HttpURLConnection httpConn = (HttpURLConnection) connection;
-        InputStream response;
+      return omElement;
 
-        if (httpConn.getResponseCode() >= 400) {
-            response = httpConn.getErrorStream();
-        } else {
-            response = connection.getInputStream();
-        }
+   }
 
-        String out = "{}";
-        if (response != null) {
-            StringBuilder sb = new StringBuilder();
-            byte[] bytes = new byte[1024];
-            int len;
-            while ((len = response.read(bytes)) != -1) {
-                sb.append(new String(bytes, 0, len));
-            }
+   public static Properties getConnectorConfigProperties(String connectorName) {
 
-            if (!sb.toString().trim().isEmpty()) {
-                out = sb.toString();
-            }
-        }
+      String connectorConfigFile = null;
+      ProductConstant.init();
+      try {
+         connectorConfigFile =
+               ProductConstant.SYSTEM_TEST_SETTINGS_LOCATION + File.separator + "artifacts" + File.separator
+                     + "ESB" + File.separator + "connector" + File.separator + "config" + File.separator
+                     + connectorName + ".properties";
+         File connectorPropertyFile = new File(connectorConfigFile);
+         InputStream inputStream = null;
+         if (connectorPropertyFile.exists()) {
+            inputStream = new FileInputStream(connectorPropertyFile);
+         }
 
-        OMElement omElement = AXIOMUtil.stringToOM(out);
+         if (inputStream != null) {
+            Properties prop = new Properties();
+            prop.load(inputStream);
+            inputStream.close();
+            return prop;
+         }
 
-        return omElement;
+      } catch (IOException ignored) {
+         log.error("automation.properties file not found, please check your configuration");
+      }
 
-    }
+      return null;
+   }
 
-    public static Properties getConnectorConfigProperties(String connectorName) {
+   public static OMElement sendReceive(OMElement payload, String endPointReference, String operation,
+                                       String contentType) throws AxisFault {
 
-        String connectorConfigFile = null;
-        ProductConstant.init();
-        try {
-            connectorConfigFile =
-                    ProductConstant.SYSTEM_TEST_SETTINGS_LOCATION + File.separator + "artifacts" + File.separator
-                            + "ESB" + File.separator + "connector" + File.separator + "config" + File.separator
-                            + connectorName + ".properties";
-            File connectorPropertyFile = new File(connectorConfigFile);
-            InputStream inputStream = null;
-            if (connectorPropertyFile.exists()) {
-                inputStream = new FileInputStream(connectorPropertyFile);
-            }
+      ServiceClient sender;
+      Options options;
+      OMElement response = null;
+      if (log.isDebugEnabled()) {
+         log.debug("Service Endpoint : " + endPointReference);
+         log.debug("Service Operation : " + operation);
+         log.debug("Payload : " + payload);
+      }
+      try {
+         sender = new ServiceClient();
+         options = new Options();
+         options.setTo(new EndpointReference(endPointReference));
+         options.setProperty(org.apache.axis2.transport.http.HTTPConstants.CHUNKED, Boolean.FALSE);
+         options.setTimeOutInMilliSeconds(45000);
+         options.setAction("urn:" + operation);
+         options.setSoapVersionURI(SOAP12Constants.SOAP_ENVELOPE_NAMESPACE_URI);
+         options.setProperty(Constants.Configuration.MESSAGE_TYPE, contentType);
+         sender.setOptions(options);
 
-            if (inputStream != null) {
-                Properties prop = new Properties();
-                prop.load(inputStream);
-                inputStream.close();
-                return prop;
-            }
+         response = sender.sendReceive(payload);
+         if (log.isDebugEnabled()) {
+            log.debug("Response Message : " + response);
+         }
+      } catch (AxisFault axisFault) {
+         log.error(axisFault.getMessage());
+         throw new AxisFault("AxisFault while getting response :" + axisFault.getMessage(), axisFault);
+      }
+      return response;
+   }
 
-        } catch (IOException ignored) {
-            log.error("automation.properties file not found, please check your configuration");
-        }
+   /**
+    * Method to read in contents of a file as String
+    *
+    * @param path
+    * @return String contents of file
+    * @throws java.io.IOException
+    */
+   public static String getFileContent(String path) throws IOException {
 
-        return null;
-    }
+      StringBuilder stringBuilder = new StringBuilder();
+      BufferedReader reader = null;
+      try {
+         reader = new BufferedReader(new FileReader(path));
+         String line = null;
 
-    public static OMElement sendReceive(OMElement payload, String endPointReference, String operation,
-                                        String contentType) throws AxisFault {
+         String ls = System.getProperty("line.separator");
 
-        ServiceClient sender;
-        Options options;
-        OMElement response = null;
-        if (log.isDebugEnabled()) {
-            log.debug("Service Endpoint : " + endPointReference);
-            log.debug("Service Operation : " + operation);
-            log.debug("Payload : " + payload);
-        }
-        try {
-            sender = new ServiceClient();
-            options = new Options();
-            options.setTo(new EndpointReference(endPointReference));
-            options.setProperty(org.apache.axis2.transport.http.HTTPConstants.CHUNKED, Boolean.FALSE);
-            options.setTimeOutInMilliSeconds(45000);
-            options.setAction("urn:" + operation);
-            options.setSoapVersionURI(SOAP12Constants.SOAP_ENVELOPE_NAMESPACE_URI);
-            options.setProperty(Constants.Configuration.MESSAGE_TYPE, contentType);
-            sender.setOptions(options);
+         while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
+            stringBuilder.append(ls);
+         }
 
-            response = sender.sendReceive(payload);
-            if (log.isDebugEnabled()) {
-                log.debug("Response Message : " + response);
-            }
-        } catch (AxisFault axisFault) {
-            log.error(axisFault.getMessage());
-            throw new AxisFault("AxisFault while getting response :" + axisFault.getMessage(), axisFault);
-        }
-        return response;
-    }
+      } catch (IOException ioe) {
+         log.error("Error reading request from file.", ioe);
+      } finally {
+         if (reader != null) {
+            reader.close();
+         }
+      }
+      return stringBuilder.toString();
 
-    /**
-     * Method to read in contents of a file as String
-     *
-     * @param path
-     * @return String contents of file
-     * @throws java.io.IOException
-     */
-    public static String getFileContent(String path) throws IOException {
+   }
 
-        StringBuilder stringBuilder = new StringBuilder();
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(path));
-            String line = null;
+   /**
+    * Convert first letter of a string to upper case
+    *
+    * @param string
+    * @return <strong>String</strong> with the first letter as upper case
+    */
+   public static String firstToUpperCase(String string) {
 
-            String ls = System.getProperty("line.separator");
-
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line);
-                stringBuilder.append(ls);
-            }
-
-        } catch (IOException ioe) {
-            log.error("Error reading request from file.", ioe);
-        } finally {
-            if (reader != null) {
-                reader.close();
-            }
-        }
-        return stringBuilder.toString();
-
-    }
-
-    /**
-     * Convert first letter of a string to upper case
-     *
-     * @param string
-     * @return <strong>String</strong> with the first letter as upper case
-     */
-    public static String firstToUpperCase(String string) {
-
-        String post = string.substring(1, string.length());
-        String first = ("" + string.charAt(0)).toUpperCase();
-        return first + post;
-    }
+      String post = string.substring(1, string.length());
+      String first = ("" + string.charAt(0)).toUpperCase();
+      return first + post;
+   }
 
 }
